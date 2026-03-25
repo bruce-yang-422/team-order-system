@@ -1,4 +1,4 @@
-# team-order-system
+# Team Ordering System
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/bruce-yang-422/team-order-system?style=for-the-badge)](https://github.com/bruce-yang-422/team-order-system)
 [![GitHub last commit](https://img.shields.io/github/last-commit/bruce-yang-422/team-order-system?style=for-the-badge)](https://github.com/bruce-yang-422/team-order-system/commits/main)
