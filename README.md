@@ -1,33 +1,38 @@
 # team-order-system
 
-Internal team ordering system for category-based menus, item customization, and easy LINE order copy.
+內部團隊點餐系統，提供分類選單、品項客製化與 LINE 訊息快速複製。
 
-## Overview
+## 專案簡介
 
-This project is a lightweight internal ordering site for team meal orders.
+這個專案是一個輕量的內部點餐網站，用來整理團隊午餐或團購點單。
 
-Current features:
+目前功能：
 
-- Apple-style landing page
-- Category-based entry page
-- Fried chicken menu page
-- Item customization such as spicy and plum powder
-- Multi-group ordering for the same item
-- One-click copy for LINE order messages
+- Apple 風格首頁
+- 分類式入口頁
+- 阿惠炸雞點餐頁
+- 支援加辣、加梅粉等客製選項
+- 同品項可拆成多組不同口味
+- 一鍵複製成 LINE 點餐訊息
 
-## Pages
+## 連結
 
-- `index.html`: homepage and category entry
-- `ahui_fried_chicken.html`: Ahui Fried Chicken ordering page
+- GitHub Repository：`https://github.com/bruce-yang-422/team-order-system`
+- 正式網址：`https://order.stack-base.com`
 
-## Structure
+## 頁面
 
-- `css/`: stylesheets
-- `js/`: JavaScript files
-- `assets/png/`: PNG assets
-- `assets/jpg/`: JPG assets
-- `dos/`: project notes and documents
+- `index.html`：首頁與分類入口
+- `ahui_fried_chicken.html`：阿惠炸雞點餐頁
 
-## Usage
+## 結構
 
-Open `index.html` in a browser to start browsing categories and place an order.
+- `css/`：樣式檔
+- `js/`：JavaScript 檔
+- `assets/png/`：PNG 圖片資源
+- `assets/jpg/`：JPG 圖片資源
+- `dos/`：專案文件與備註
+
+## 使用方式
+
+使用瀏覽器開啟 `index.html`，即可從首頁進入分類並開始點餐。
