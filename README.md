@@ -1,5 +1,10 @@
 # team-order-system
 
+[![GitHub Repo stars](https://img.shields.io/github/stars/bruce-yang-422/team-order-system?style=for-the-badge)](https://github.com/bruce-yang-422/team-order-system)
+[![GitHub last commit](https://img.shields.io/github/last-commit/bruce-yang-422/team-order-system?style=for-the-badge)](https://github.com/bruce-yang-422/team-order-system/commits/main)
+[![GitHub top language](https://img.shields.io/github/languages/top/bruce-yang-422/team-order-system?style=for-the-badge)](https://github.com/bruce-yang-422/team-order-system)
+[![Website](https://img.shields.io/badge/site-order.stack--base.com-0a84ff?style=for-the-badge)](https://order.stack-base.com)
+
 內部團隊點餐系統，提供分類選單、品項客製化與 LINE 訊息快速複製。
 
 ## 專案簡介
@@ -17,8 +22,8 @@
 
 ## 連結
 
-- GitHub Repository：`https://github.com/bruce-yang-422/team-order-system`
-- 正式網址：`https://order.stack-base.com`
+- GitHub Repository：[bruce-yang-422/team-order-system](https://github.com/bruce-yang-422/team-order-system)
+- 正式網址：[order.stack-base.com](https://order.stack-base.com)
 
 ## 頁面
 
