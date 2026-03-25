@@ -1,9 +1,9 @@
 # Team Ordering System
 
-[![GitHub Repo stars](https://img.shields.io/github/stars/bruce-yang-422/team-order-system?style=for-the-badge)](https://github.com/bruce-yang-422/team-order-system)
-[![GitHub last commit](https://img.shields.io/github/last-commit/bruce-yang-422/team-order-system?style=for-the-badge)](https://github.com/bruce-yang-422/team-order-system/commits/main)
-[![GitHub top language](https://img.shields.io/github/languages/top/bruce-yang-422/team-order-system?style=for-the-badge)](https://github.com/bruce-yang-422/team-order-system)
-[![Website](https://img.shields.io/badge/site-order.stack--base.com-0a84ff?style=for-the-badge)](https://order.stack-base.com)
+[![GitHub Repo stars](https://img.shields.io/github/stars/bruce-yang-422/team-order-system?style=social)](https://github.com/bruce-yang-422/team-order-system)
+[![GitHub last commit](https://img.shields.io/github/last-commit/bruce-yang-422/team-order-system?style=flat-square)](https://github.com/bruce-yang-422/team-order-system/commits/main)
+[![GitHub top language](https://img.shields.io/github/languages/top/bruce-yang-422/team-order-system?style=flat-square)](https://github.com/bruce-yang-422/team-order-system)
+[![Website](https://img.shields.io/badge/site-order.stack--base.com-0a84ff?style=flat-square)](https://order.stack-base.com)
 
 內部團隊點餐系統，提供分類選單、品項客製化與 LINE 訊息快速複製。
 
@@ -41,3 +41,5 @@
 ## 使用方式
 
 使用瀏覽器開啟 `index.html`，即可從首頁進入分類並開始點餐。
+
+
