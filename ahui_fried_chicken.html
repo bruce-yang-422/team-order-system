@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>阿惠炸雞</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  /* ── Apple System Colors ── */
+  --blue:       #007AFF;
+  --blue-lt:    #5AC8FA;
+  --blue-bg:    rgba(0,122,255,0.09);
+  --blue-bd:    rgba(0,122,255,0.22);
+  --red:        #FF3B30;
+  --red-bg:     rgba(255,59,48,0.09);
+  --red-bd:     rgba(255,59,48,0.26);
+  --orange:     #FF9500;
+  --orange-bg:  rgba(255,149,0,0.09);
+  --orange-bd:  rgba(255,149,0,0.26);
+  --purple:     #AF52DE;
+  --purple-bg:  rgba(175,82,222,0.08);
+  --purple-bd:  rgba(175,82,222,0.24);
+  --green:      #34C759;
+  --green-bg:   rgba(52,199,89,0.09);
+  --teal:       #5AC8FA;
+  --pink-hint:  #FF2D55;
+  --pink-soft:  rgba(255,45,85,0.07);
+  /* ── Neutral grays (Apple SF) ── */
+  --bg1:        #f2f2f7;
+  --bg2:        #ffffff;
+  --fill1:      rgba(120,120,128,0.12);
+  --fill2:      rgba(120,120,128,0.08);
+  --fill3:      rgba(120,120,128,0.05);
+  --separator:  rgba(60,60,67,0.12);
+  --t1:         #1c1c1e;
+  --t2:         #3a3a3c;
+  --t3:         #6d6d72;
+  --t4:         #aeaeb2;
+  --max:        680px;
+  --font:'Noto Sans TC',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+html{-webkit-text-size-adjust:100%}
+
+body{
+  font-family:var(--font);
+  color:var(--t1);
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+  padding-bottom:210px;
+  background:
+    radial-gradient(ellipse 100% 60% at 20% 0%,  rgba(255,45,85,0.06) 0%,  transparent 55%),
+    radial-gradient(ellipse 70%  50% at 85% 15%, rgba(0,122,255,0.05)  0%,  transparent 50%),
+    radial-gradient(ellipse 80%  70% at 50% 90%, rgba(90,200,250,0.05) 0%,  transparent 60%),
+    #f2f2f7;
+  background-attachment:fixed;
+}
+
+.page{max-width:var(--max);margin:0 auto;padding:0 16px}
+
+/* ─── NAV ─── */
+nav{
+  background:rgba(242,242,247,0.82);
+  backdrop-filter:saturate(180%) blur(28px);
+  -webkit-backdrop-filter:saturate(180%) blur(28px);
+  border-bottom:1px solid var(--separator);
+  position:sticky;top:0;z-index:100;
+  box-shadow:
+    inset 0 -1px 0 var(--separator),
+    0 1px 12px rgba(0,0,0,0.05);
+}
+.nav-inner{
+  max-width:var(--max);margin:0 auto;
+  display:flex;align-items:center;
+  padding:0 18px;height:52px;gap:12px;
+}
+.nav-icon{
+  width:36px;height:36px;
+  background:linear-gradient(145deg,rgba(255,88,116,0.9),rgba(255,45,85,0.88));
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;
+  border:1px solid rgba(255,255,255,0.40);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.45),
+    0 2px 8px rgba(255,45,85,0.22);
+}
+.nav-name{font-size:1rem;font-weight:700;color:var(--t1);letter-spacing:-.2px}
+.nav-sub{font-size:.65rem;color:var(--t4);letter-spacing:1.5px;margin-top:1px;text-transform:uppercase}
+
+/* ─── SECTION ─── */
+.section{margin-top:26px}
+.cat-label{
+  font-size:.65rem;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--blue);padding:0 2px;margin-bottom:9px;
+  display:flex;align-items:center;gap:8px;
+}
+.cat-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--separator),transparent)}
+
+/* ─── CARD ─── */
+.card{
+  background:linear-gradient(
+    148deg,
+    rgba(255,255,255,0.82) 0%,
+    rgba(255,255,255,0.68) 60%,
+    rgba(242,242,247,0.55) 100%
+  );
+  backdrop-filter:saturate(180%) blur(24px);
+  -webkit-backdrop-filter:saturate(180%) blur(24px);
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,0.78);
+  margin-bottom:8px;overflow:hidden;
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,0.95),
+    inset 0 -1px 0 rgba(0,0,0,0.03),
+    0 2px 10px rgba(0,0,0,0.06),
+    0 1px 3px rgba(0,0,0,0.04);
+  transition:box-shadow .2s, transform .18s;
+}
+.card:hover{
+  transform:translateY(-1px);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,0.95),
+    0 6px 22px rgba(0,0,0,0.09),
+    0 2px 6px rgba(0,0,0,0.05);
+}
+.card.hot{
+  border-color:rgba(0,122,255,0.30);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,0.95),
+    0 0 0 3px rgba(0,122,255,0.09),
+    0 4px 16px rgba(0,0,0,0.07);
+}
+.card-body{padding:14px 16px}
+.row-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.name{flex:1;font-size:.92rem;font-weight:600;letter-spacing:-.2px;color:var(--t1)}
+
+.chip{
+  font-size:.7rem;font-weight:600;color:var(--blue);
+  background:var(--blue-bg);
+  border:1px solid var(--blue-bd);
+  border-radius:20px;padding:3px 10px;white-space:nowrap;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+.row-bot{display:flex;align-items:center;gap:8px}
+
+/* ─── SEASONING ─── */
+.season-row{flex:1;display:flex;align-items:center;gap:5px}
+.pill-plain{
+  font-size:.65rem;font-weight:500;color:var(--t4);
+  border-radius:20px;padding:4px 9px;white-space:nowrap;line-height:1;
+  flex-shrink:0;user-select:none;border:1px solid transparent;transition:all .16s;
+}
+.pill-plain.lit{
+  color:var(--t3);
+  background:rgba(255,255,255,0.65);
+  border-color:var(--separator);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.9), 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toggle-wrap{display:flex;gap:4px;flex:1}
+.tog{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:3px;
+  padding:5px 4px;border-radius:20px;
+  border:1px solid var(--separator);
+  background:rgba(255,255,255,0.50);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  font-family:var(--font);font-size:.65rem;font-weight:500;
+  color:var(--t3);cursor:pointer;
+  transition:all .15s;white-space:nowrap;line-height:1;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.75);
+}
+.tog .dot{width:5px;height:5px;border-radius:50%;background:var(--t4);flex-shrink:0;transition:background .14s}
+.tog:hover{background:rgba(255,255,255,0.70);border-color:rgba(60,60,67,0.18)}
+.tog.spicy-on{background:var(--red-bg);border-color:var(--red-bd);color:var(--red);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.6), 0 0 0 2px rgba(255,59,48,0.07)}
+.tog.spicy-on .dot{background:var(--red)}
+.tog.plum-on{background:var(--purple-bg);border-color:var(--purple-bd);color:var(--purple);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.6), 0 0 0 2px rgba(175,82,222,0.07)}
+.tog.plum-on .dot{background:var(--purple)}
+
+/* ─── STEPPER ─── */
+.stepper{
+  display:flex;align-items:center;
+  background:rgba(255,255,255,0.55);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid var(--separator);
+  border-radius:20px;flex-shrink:0;overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.85), 0 1px 3px rgba(0,0,0,0.05);
+}
+.st{
+  width:28px;height:28px;border:none;background:transparent;
+  color:var(--blue);font-size:.9rem;font-weight:600;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .12s;
+}
+.st:hover{background:var(--fill1)}
+.sn{
+  min-width:22px;text-align:center;font-size:.84rem;font-weight:600;
+  color:var(--t4);user-select:none;transition:color .14s;
+}
+.sn.nz{color:var(--blue)}
+
+.order-stack{display:grid;gap:8px}
+.order-line{
+  padding:10px 10px 10px 12px;
+  background:rgba(255,255,255,0.52);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.70);
+  border-radius:14px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.88);
+}
+.order-line.active{
+  background:var(--blue-bg);
+  border-color:var(--blue-bd);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.85), 0 0 0 3px rgba(0,122,255,0.07);
+}
+.line-head{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:8px;margin-bottom:9px;
+}
+.line-label{
+  font-size:.66rem;font-weight:600;color:var(--t4);
+  letter-spacing:.8px;text-transform:uppercase;
+}
+.line-remove{
+  border:none;background:transparent;color:var(--t4);
+  font-family:var(--font);font-size:.72rem;font-weight:600;
+  cursor:pointer;padding:2px 4px;transition:color .14s;
+}
+.line-remove:hover{color:var(--red)}
+.add-line{
+  width:100%;margin-top:10px;padding:8px 10px;
+  background:rgba(255,255,255,0.42);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px dashed rgba(60,60,67,0.22);
+  border-radius:12px;color:var(--blue);
+  font-family:var(--font);font-size:.75rem;font-weight:600;
+  cursor:pointer;transition:all .15s;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.80);
+}
+.add-line:hover{
+  background:rgba(255,255,255,0.64);
+  border-color:var(--blue-bd);
+}
+/* ─── VARIANT ─── */
+.vwrap{
+  background:linear-gradient(148deg,rgba(255,255,255,0.80),rgba(242,242,247,0.58));
+  backdrop-filter:saturate(180%) blur(24px);
+  -webkit-backdrop-filter:saturate(180%) blur(24px);
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,0.75);
+  margin-bottom:8px;padding:14px 16px;
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,0.95),
+    0 2px 10px rgba(0,0,0,0.06);
+}
+.vtitle{
+  font-size:.92rem;font-weight:600;color:var(--t1);letter-spacing:-.2px;
+  padding-bottom:11px;margin-bottom:11px;
+  border-bottom:1px solid var(--separator);
+}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:380px){.vgrid{grid-template-columns:1fr}}
+.vcell{
+  background:rgba(255,255,255,0.52);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-radius:12px;padding:10px 12px;
+  border:1px solid rgba(255,255,255,0.68);
+  transition:all .16s;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.88);
+}
+.vcell.hot{
+  background:var(--blue-bg);
+  border-color:var(--blue-bd);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.85), 0 0 0 3px rgba(0,122,255,0.07);
+}
+.vcell-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+.vsize{font-size:.74rem;font-weight:500;color:var(--t3)}
+.vprice{font-size:.74rem;font-weight:700;color:var(--blue)}
+
+/* ─── ORDER BAR ─── */
+#bar{position:fixed;bottom:0;left:0;right:0;z-index:200}
+.bar-wrap{max-width:var(--max);margin:0 auto;padding:0 12px 12px}
+.bar-sheet{
+  background:linear-gradient(
+    165deg,
+    rgba(255,255,255,0.86) 0%,
+    rgba(255,255,255,0.74) 50%,
+    rgba(242,242,247,0.68) 100%
+  );
+  backdrop-filter:saturate(200%) blur(36px);
+  -webkit-backdrop-filter:saturate(200%) blur(36px);
+  border-radius:22px 22px 16px 16px;
+  border:1px solid rgba(255,255,255,0.82);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.98),
+    inset 0 -1px 0 rgba(0,0,0,0.03),
+    0 -1px 0 var(--separator),
+    0 -6px 28px rgba(0,0,0,0.07),
+    0 8px 32px rgba(0,0,0,0.05);
+  overflow:hidden;
+}
+.bar-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:13px 18px;cursor:pointer;
+  border-bottom:1px solid transparent;transition:border-color .2s;
+}
+.bar-header.sep{border-color:var(--separator)}
+.bhl{display:flex;align-items:center;gap:8px}
+.bh-title{font-size:.87rem;font-weight:600;color:var(--t1)}
+.bh-badge{
+  background:var(--pink-hint);color:#fff;font-size:.62rem;font-weight:700;
+  border-radius:20px;padding:2px 9px;line-height:1.4;
+  opacity:0;transform:scale(.7);transition:all .2s;
+  border:1px solid rgba(255,255,255,0.22);
+  box-shadow:0 1px 5px rgba(255,45,85,0.28);
+}
+.bh-badge.on{opacity:1;transform:scale(1)}
+.bhr{display:flex;align-items:center;gap:8px}
+.bh-total{font-size:.96rem;font-weight:700;color:var(--blue)}
+.bh-chev{width:16px;height:16px;color:var(--t4);transition:transform .25s cubic-bezier(.4,0,.2,1)}
+.bh-chev.up{transform:rotate(180deg)}
+
+.bar-body{max-height:0;overflow:hidden;transition:max-height .32s cubic-bezier(.4,0,.2,1)}
+.bar-body.open{max-height:56vh;overflow-y:auto}
+.bar-inner{padding:10px 18px 4px}
+
+.bar-body::-webkit-scrollbar{width:3px}
+.bar-body::-webkit-scrollbar-track{background:transparent}
+.bar-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.12);border-radius:2px}
+
+.empty{text-align:center;padding:20px 0 12px;color:var(--t4);font-size:.82rem}
+.empty span{display:block;font-size:1.5rem;margin-bottom:6px}
+
+.ol{display:flex;align-items:center;gap:6px;padding:7px 0;border-bottom:1px solid var(--separator);font-size:.8rem}
+.ol:last-of-type{border:none}
+.ol-n{flex:1;font-weight:500;color:var(--t1)}
+.ol-tags{display:flex;gap:3px;flex-shrink:0}
+.tag{
+  font-size:.61rem;font-weight:600;padding:2px 8px;
+  border-radius:20px;white-space:nowrap;border:1px solid;
+}
+.tag-plain{background:var(--fill2);color:var(--t3);border-color:var(--separator)}
+.tag-spicy{background:var(--red-bg);color:var(--red);border-color:var(--red-bd)}
+.tag-plum {background:var(--purple-bg);color:var(--purple);border-color:var(--purple-bd)}
+.ol-q{color:var(--t4);font-size:.75rem}
+.ol-p{font-weight:700;min-width:36px;text-align:right;color:var(--blue)}
+
+.sum-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:10px 0 12px;border-top:1px solid var(--separator);margin-top:2px;
+}
+.sum-lbl{font-size:.82rem;color:var(--t3);font-weight:500}
+.sum-amt{font-size:1.05rem;font-weight:700;color:var(--blue)}
+
+/* CTA button */
+.btn-copy{
+  width:100%;padding:12px;
+  background:linear-gradient(145deg,rgba(0,132,255,0.92),rgba(0,100,220,0.94));
+  border:1px solid rgba(255,255,255,0.25);
+  border-radius:14px;color:#fff;font-family:var(--font);
+  font-size:.87rem;font-weight:600;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  margin-bottom:7px;transition:all .18s;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.28),
+    inset 0 -1px 0 rgba(0,0,0,0.10),
+    0 3px 14px rgba(0,100,220,0.28);
+}
+.btn-copy:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.28), 0 6px 22px rgba(0,100,220,0.35)}
+.btn-copy:active{transform:translateY(0)}
+.btn-copy.ok{
+  background:linear-gradient(145deg,rgba(52,199,89,0.92),rgba(36,160,68,0.94));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.25), 0 3px 14px rgba(52,199,89,0.28);
+}
+
+.btn-clear{
+  width:100%;padding:9px;
+  background:rgba(255,255,255,0.48);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid var(--separator);border-radius:12px;
+  color:var(--t3);font-family:var(--font);font-size:.8rem;
+  font-weight:500;cursor:pointer;margin-bottom:6px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.80);
+  transition:all .15s;
+}
+.btn-clear:hover{color:var(--red);border-color:var(--red-bd);background:rgba(255,255,255,0.65)}
+
+/* ─── TOAST ─── */
+#toast{
+  position:fixed;bottom:228px;left:50%;
+  transform:translateX(-50%) translateY(10px);
+  background:rgba(30,30,35,0.78);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  color:#fff;padding:9px 20px;
+  border:1px solid rgba(255,255,255,0.16);
+  border-radius:30px;font-size:.78rem;font-weight:600;
+  opacity:0;pointer-events:none;z-index:400;
+  transition:all .24s cubic-bezier(.4,0,.2,1);white-space:nowrap;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.12), 0 6px 24px rgba(0,0,0,0.22);
+}
+#toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.card,.vwrap{animation:up .25s ease both}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-icon">🍗</div>
+    <div>
+      <div class="nav-name">阿惠炸雞</div>
+      <div class="nav-sub">點餐 · Order</div>
+    </div>
+  </div>
+</nav>
+
+<div class="page" id="menu"></div>
+
+<div id="bar">
+  <div class="bar-wrap">
+    <div class="bar-sheet">
+      <div class="bar-header" id="bhdr" onclick="toggleBar()">
+        <div class="bhl">
+          <span class="bh-title">我的點單</span>
+          <span class="bh-badge" id="badge"></span>
+        </div>
+        <div class="bhr">
+          <span class="bh-total" id="btotal">$0</span>
+          <svg class="bh-chev" id="bchev" viewBox="0 0 16 16" fill="none">
+            <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="bar-body" id="bbody">
+        <div class="bar-inner" id="binner"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="toast"></div>
+
+<script>
+const MENU=[
+  {cat:'🍗 雞類',items:[
+    {id:'w', name:'雞翅',  variants:[{label:'1支',price:20},{label:'5支',price:100}]},
+    {id:'bl',name:'大雞腿',price:75},
+    {id:'sl',name:'小雞腿',price:55},
+    {id:'lr',name:'腿排',  price:40},
+    {id:'ct',name:'雞排',  price:70},
+  ]},
+  {cat:'🧆 雞類加工 · 主炸物',items:[
+    {id:'bbc',name:'無骨鹹酥雞',variants:[{label:'小份',price:50},{label:'大份',price:100}]},
+    {id:'mc', name:'麥克雞塊',price:40},
+  ]},
+  {cat:'🐙 丸類 · 特殊品項',items:[
+    {id:'sq',name:'花枝丸',      price:25,unit:'串'},
+    {id:'tb',name:'蛋黃麻糬芋丸',price:10,unit:'顆'},
+  ]},
+  {cat:'🍟 薯類 · 地瓜類',items:[
+    {id:'swf',name:'地瓜薯條',  variants:[{label:'小份',price:50},{label:'大份',price:100}]},
+    {id:'pf', name:'馬鈴薯薯條',price:30},
+    {id:'ph', name:'薯餅',      price:20},
+  ]},
+  {cat:'🌯 其他炸物',items:[
+    {id:'sp',name:'春捲', price:10,unit:'條'},
+    {id:'tc',name:'芋仔餅',price:20},
+    {id:'fp',name:'甜不辣',price:20},
+    {id:'cr',name:'雞腿捲',price:35},
+    {id:'sr',name:'蝦捲', variants:[{label:'1條',price:15},{label:'4條',price:50}]},
+  ]},
+];
+const S={};
+let lineSeq=0;
+const sk=(id,vi)=>vi!==undefined?`${id}_v${vi}`:id;
+const makeLine=()=>({id:`l${++lineSeq}`,qty:0,spicy:false,plum:false});
+function ensureLines(k){
+  if(!Array.isArray(S[k])||!S[k].length)S[k]=[makeLine()];
+  return S[k];
+}
+function lineKey(k,lineId){return `${k}__${lineId}`}
+function getLine(k,lineId){return ensureLines(k).find(line=>line.id===lineId)}
+function lineActive(line){return line.qty>0}
+function isPlain(line){return !line.spicy&&!line.plum}
+function seasonHtml(k,lineId){
+  const s=getLine(k,lineId);
+  return `<div class="season-row">
+    <span class="pill-plain ${isPlain(s)?'lit':''}">原味</span>
+    <div class="toggle-wrap">
+      <button class="tog ${s.spicy?'spicy-on':''}" onclick="tog('${k}','${lineId}','spicy')"><span class="dot"></span>加辣</button>
+      <button class="tog ${s.plum?'plum-on':''}" onclick="tog('${k}','${lineId}','plum')"><span class="dot"></span>加梅粉</button>
+    </div>
+  </div>`;
+}
+function stepHtml(k,lineId){
+  const s=getLine(k,lineId);
+  return `<div class="stepper">
+    <button class="st" onclick="chQty('${k}','${lineId}',-1)">−</button>
+    <span class="sn ${s.qty>0?'nz':''}" id="n-${lineKey(k,lineId)}">${s.qty}</span>
+    <button class="st" onclick="chQty('${k}','${lineId}',1)">＋</button>
+  </div>`;
+}
+function lineHtml(k,line,index,total){
+  const label=total===1?'這一組':`第 ${index+1} 組`;
+  return `<div class="order-line ${lineActive(line)?'active':''}" id="l-${lineKey(k,line.id)}">
+    <div class="line-head">
+      <span class="line-label">${label}</span>
+      ${total>1?`<button class="line-remove" onclick="removeLine('${k}','${line.id}')">移除</button>`:''}
+    </div>
+    <div class="row-bot" id="rb-${lineKey(k,line.id)}">${seasonHtml(k,line.id)}${stepHtml(k,line.id)}</div>
+  </div>`;
+}
+function stackHtml(k){
+  const lines=ensureLines(k);
+  return `<div class="order-stack" id="stack-${k}">${lines.map((line,index)=>lineHtml(k,line,index,lines.length)).join('')}</div>
+    <button class="add-line" onclick="addLine('${k}')">＋ 新增一組口味</button>`;
+}
+function hasActiveGroup(k){return ensureLines(k).some(line=>line.qty>0)}
+function buildMenu(){
+  document.getElementById('menu').innerHTML=MENU.map(({cat,items})=>`
+    <div class="section">
+      <div class="cat-label">${cat}</div>
+      ${items.map(i=>i.variants?buildV(i):buildC(i)).join('')}
+    </div>`).join('');
+}
+function buildC(item){
+  const k=sk(item.id);
+  const u=item.unit?`1${item.unit} `:'';
+  return `<div class="card ${hasActiveGroup(k)?'hot':''}" id="c-${k}">
+    <div class="card-body">
+      <div class="row-top"><span class="name">${item.name}</span><span class="chip">${u}$${item.price}</span></div>
+      ${stackHtml(k)}
+    </div>
+  </div>`;
+}
+function buildV(item){
+  const cells=item.variants.map((v,vi)=>{
+    const k=sk(item.id,vi);
+    return `<div class="vcell ${hasActiveGroup(k)?'hot':''}" id="c-${k}">
+      <div class="vcell-head"><span class="vsize">${v.label}</span><span class="vprice">$${v.price}</span></div>
+      ${stackHtml(k)}
+    </div>`;
+  }).join('');
+  return `<div class="vwrap"><div class="vtitle">${item.name}</div><div class="vgrid">${cells}</div></div>`;
+}
+function renderStack(k){
+  const stack=document.getElementById(`stack-${k}`);
+  if(stack){
+    const lines=ensureLines(k);
+    stack.innerHTML=lines.map((line,index)=>lineHtml(k,line,index,lines.length)).join('');
+  }
+  const card=document.getElementById(`c-${k}`);
+  if(card)card.classList.toggle('hot',hasActiveGroup(k));
+}
+function addLine(k){
+  ensureLines(k).push(makeLine());
+  renderStack(k);
+  renderOrder();
+}
+function removeLine(k,lineId){
+  const next=ensureLines(k).filter(line=>line.id!==lineId);
+  S[k]=next.length?next:[makeLine()];
+  renderStack(k);
+  renderOrder();
+}
+function chQty(k,lineId,d){
+  const s=getLine(k,lineId);
+  s.qty=Math.max(0,s.qty+d);
+  renderStack(k);
+  renderOrder();
+}
+function tog(k,lineId,type){
+  const s=getLine(k,lineId);
+  if(type==='spicy')s.spicy=!s.spicy;else s.plum=!s.plum;
+  renderStack(k);
+  renderOrder();
+}
+let barOpen=true;
+function toggleBar(){
+  barOpen=!barOpen;
+  document.getElementById('bbody').classList.toggle('open',barOpen);
+  document.getElementById('bchev').classList.toggle('up',barOpen);
+}
+function collect(){
+  const rows=[];
+  MENU.forEach(({items})=>items.forEach(item=>{
+    if(item.variants){
+      item.variants.forEach((v,vi)=>{
+        const k=sk(item.id,vi);
+        ensureLines(k).forEach(line=>{
+          if(line.qty>0)rows.push({name:`${item.name}（${v.label}）`,qty:line.qty,price:v.price,spicy:line.spicy,plum:line.plum});
+        });
+      });
+    }else{
+      const k=sk(item.id);
+      ensureLines(k).forEach(line=>{
+        if(line.qty>0)rows.push({name:item.name,qty:line.qty,price:item.price,spicy:line.spicy,plum:line.plum});
+      });
+    }
+  }));
+  return rows;
+}
+function renderOrder(){
+  const lines=collect();
+  const total=lines.reduce((a,l)=>a+l.qty*l.price,0);
+  const count=lines.reduce((a,l)=>a+l.qty,0);
+  document.getElementById('btotal').textContent=`$${total}`;
+  const b=document.getElementById('badge');
+  b.textContent=`${count} 樣`;b.classList.toggle('on',count>0);
+  document.getElementById('bhdr').classList.toggle('sep',lines.length>0);
+  const inn=document.getElementById('binner');
+  if(!lines.length){inn.innerHTML=`<div class="empty"><span>🛒</span>尚未選擇任何品項</div>`;return}
+  let h=lines.map(l=>{
+    const plain=!l.spicy&&!l.plum;
+    const tags=plain?`<span class="tag tag-plain">原味</span>`
+      :[l.spicy?`<span class="tag tag-spicy">加辣</span>`:'',l.plum?`<span class="tag tag-plum">加梅粉</span>`:''].join('');
+    return `<div class="ol"><span class="ol-n">${l.name}</span><span class="ol-tags">${tags}</span><span class="ol-q">× ${l.qty}</span><span class="ol-p">$${l.qty*l.price}</span></div>`;
+  }).join('');
+  h+=`<div class="sum-row"><span class="sum-lbl">合計</span><span class="sum-amt">$${total}</span></div>`;
+  h+=`<button class="btn-copy" id="cpbtn" onclick="doCopy()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>複製成 LINE 訊息</button>`;
+  h+=`<button class="btn-clear" onclick="clearAll()">清除點單</button>`;
+  inn.innerHTML=h;
+}
+function doCopy(){
+  const lines=collect();
+  const total=lines.reduce((a,l)=>a+l.qty*l.price,0);
+  const count=lines.reduce((a,l)=>a+l.qty,0);
+  const msg=['【阿惠炸雞 點餐單】','─────────────',
+    ...lines.map(l=>{const p=[];if(l.spicy)p.push('加辣');if(l.plum)p.push('加梅粉');return `${l.name} ×${l.qty}　${p.length?p.join('＋'):'原味'}　$${l.qty*l.price}`}),
+    '─────────────',`共 ${count} 樣，合計 $${total}`].join('\n');
+  const done=()=>{
+    toast('已複製到剪貼簿 ✓');
+    const b=document.getElementById('cpbtn');
+    if(b){b.textContent='✓ 已複製！';b.classList.add('ok')}
+    setTimeout(()=>{const b=document.getElementById('cpbtn');if(b){b.innerHTML=`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>複製成 LINE 訊息`;b.classList.remove('ok')}},2400);
+  };
+  navigator.clipboard.writeText(msg).then(done).catch(()=>{const t=Object.assign(document.createElement('textarea'),{value:msg});document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();done()});
+}
+function clearAll(){Object.keys(S).forEach(k=>{S[k]=[makeLine()]});buildMenu();renderOrder()}
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),2200)}
+buildMenu();renderOrder();
+document.getElementById('bbody').classList.add('open');
+document.getElementById('bchev').classList.add('up');
+</script>
+</body>
+</html>
+
+
